@@ -1,0 +1,6 @@
+/home/chavo/ros_catkin_ws/build/CMakeFiles/clean_test_results.dir
+/home/chavo/ros_catkin_ws/build/CMakeFiles/doxygen.dir
+/home/chavo/ros_catkin_ws/build/gtest/CMakeFiles/gtest.dir
+/home/chavo/ros_catkin_ws/build/gtest/CMakeFiles/gtest_main.dir
+/home/chavo/ros_catkin_ws/build/CMakeFiles/run_tests.dir
+/home/chavo/ros_catkin_ws/build/CMakeFiles/tests.dir
