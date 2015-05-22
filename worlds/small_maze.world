@@ -1,0 +1,356 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+    <world name="small_maze">
+      <model name='laberinto'>
+        <link name="goal">
+           <collision name='goal'>
+            <geometry>
+              <box>
+                <size>1 1 0.01</size>
+              </box>
+            </geometry>
+            <pose>0.25 0.25 0.01 0 -0 0</pose>
+          </collision>
+          <visual name='goal'>
+            <pose>0.25 0.25 0.01 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>1 1 0.01</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/Green</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+            <pose>0.25 0.25 0.01 0 -0 0</pose>
+        </link>
+        <link name="ground">
+           <collision name='ground'>
+            <geometry>
+              <box>
+                <size>4 4 0.01</size>
+              </box>
+            </geometry>
+            <pose>1 1 0 0 -0 0</pose>
+          </collision>
+          <visual name='ground'>
+            <pose>1 1 0 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>4 4 0.01</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/WoodFloor</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+            <pose>1 1 0 0 -0 0</pose>
+        </link>
+        <link name='Wall_9'>
+          <collision name='Wall_9_Collision'>
+            <geometry>
+              <box>
+                <size>3.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Wall_9_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>3.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>1 1.5 0 0 0 -1.5708</pose>
+        </link>
+        <link name='Wall_12'>
+          <collision name='Wall_12_Collision'>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Wall_12_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>1.5 1 0 0 -0 0</pose>
+        </link>
+        <link name='Wall_15'>
+          <collision name='Wall_15_Collision'>
+            <geometry>
+              <box>
+                <size>2.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Wall_15_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>2.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>3 2 0 0 -0 0</pose>
+        </link>
+        <link name='Wall_17'>
+          <collision name='Wall_17_Collision'>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Wall_17_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>3 0.5 0 0 0 -1.5708</pose>
+        </link>
+        <link name='Wall_19'>
+          <collision name='Wall_19_Collision'>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Wall_19_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>2.5 3 0 0 -0 0</pose>
+        </link>
+        <link name='Wall_20'>
+          <collision name='Wall_20_Collision'>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Wall_20_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>1.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>3 3.5 0 0 0 -1.5708</pose>
+        </link>
+        <link name='Muro_Sur'>launch xacro
+          <collision name='Muro_Sur_Collision'>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Muro_Sur_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>2 0 0 0 -0 0</pose>
+        </link>
+        <link name='Muro_Este'>
+          <collision name='Muro_Este_Collision'>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Muro_Este_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>4 2 0 0 0 -1.5708</pose>
+        </link>
+        <link name='Muro_Norte'>
+          <collision name='Muro_Norte_Collision'>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Muro_Norte_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>2 4 0 0 -0 3.14159</pose>
+        </link>
+        <link name='Muro_Oeste'>
+          <collision name='Muro_Oeste_Collision'>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <pose>0 0 0.25 0 -0 0</pose>
+          </collision>
+          <visual name='Muro_Oeste_Visual'>
+            <pose>0 0 0.25 0 -0 0</pose>
+            <geometry>
+              <box>
+                <size>4.2 0.2 0.5</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://media/materials/scripts/gazebo.material</uri>
+                <name>Gazebo/PaintedWall</name>
+              </script>
+            </material>
+          </visual>
+          <velocity_decay>
+            <linear>0</linear>
+            <angular>0</angular>
+          </velocity_decay>
+          <pose>0 2 0 0 -0 1.5708</pose>
+        </link>
+        <static>1</static>
+      </model>
+    </world>
+</sdf>
