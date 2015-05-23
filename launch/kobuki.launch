@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- launch kobuki-->
+  <param name="kobuki_with_laser" command="$(find xacro)/xacro.py '$(find robots_moviles)/urdf/kobuki_with_laser.urdf.xacro'" />
+   <param name="intensity" type="bool" value="false"/>
+  <node name="kobuki_with_laser" pkg="gazebo_ros" type="spawn_model" args="-param kobuki_with_laser intensity -urdf
+	-x 3.5
+	-y 0.5
+	-z 0.2
+	-yaw 0.0000
+	 -model robot" />
+
+	 
+</launch>

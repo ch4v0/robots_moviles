@@ -1,6 +1,51 @@
 <?xml version='1.0'?>
 <sdf version='1.4'>
     <world name="small_maze">
+      <gui>
+        <camera name="my_camera">
+          <pose>2 2 8 0 1.57 1.57</pose>
+        </camera>
+      </gui>
+
+    <scene>
+      <ambient>0.5 0.5 0.5 1</ambient>
+      <background>0.5 0.5 0.5 1</background>
+      <shadows>0</shadows>
+    </scene>
+
+    <physics type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>50</iters>
+          <sor>1.4</sor>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>1</erp>
+          <contact_max_correcting_vel>0</contact_max_correcting_vel>
+          <contact_surface_layer>0</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+
+    <light type="directional" name="luz_Techo">
+      <pose>2 2 9 0 0 0</pose>
+      <diffuse>127 127 127 255</diffuse>
+      <specular>25 25 25 255</specular>
+      <attenuation>
+        <range>20</range>
+        <linear>0.2</linear>
+        <constant>0.8</constant>
+        <quadratic>0.01</quadratic>
+      </attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
       <model name='laberinto'>
         <link name="goal">
            <collision name='goal'>
