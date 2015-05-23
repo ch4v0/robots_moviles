@@ -1,13 +1,13 @@
 <launch>
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+ <!--  <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find robots_moviles)/worlds/small_maze.world"/> 
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>  
-  </include>
+  </include> -->
 
   <!-- launch kobuki-->
   <param name="kobuki_with_laser" command="$(find xacro)/xacro.py '$(find robots_moviles)/urdf/kobuki_with_laser.urdf.xacro'" />
@@ -61,7 +61,7 @@
   </node>
  -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
-    <param name="publish_frequency" type="double" value="30.0" />
+    <param name="publish_frequency" type="double" value="300.0" />
     <param name="~tf_prefix" value="$(arg robot_name)"/>
   </node>
 
