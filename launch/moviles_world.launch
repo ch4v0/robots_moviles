@@ -22,7 +22,12 @@
 
 	 <arg name="urdf_file" default="$(find xacro)/xacro.py '$(find kobuki_description)/urdf/kobuki_standalone.urdf.xacro'" />
   <param name="robot_description" command="$(arg urdf_file)" />
-
+  
+  <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="bump_blink_controller" args="load kobuki_controller_tutorial/BumpBlinkControllerNodelet mobile_base_nodelet_manager">
+    <remap from="bump_blink_controller/events/bumper" to="mobile_base/events/bumper"/>
+    <remap from="bump_blink_controller/commands/led1" to="mobile_base/commands/led1"/>
+  </node>
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
     <param name="publish_frequency" type="double" value="5.0" />
   </node>
@@ -42,7 +47,7 @@
   <node pkg="tf" type="static_transform_publisher" name="odom_to_base_link" args="0 0 0 0 0 0 odom base_link 20" />
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_hokuyo" args="0 0 0 0 0 0 base_link hokuyo 20" />
 
-  <node name="costmap_2d" pkg="costmap_2d" type="costmap_2d">
+  
 
 
 <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find kobuki_rviz_launchers)/rviz/robot.rviz" /-->
