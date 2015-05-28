@@ -13,7 +13,7 @@
       <shadows>0</shadows>
     </scene>
 
-    <physics type="ode">
+<!--     <physics type="ode">
       <gravity>0 0 -9.81</gravity>
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
@@ -31,7 +31,7 @@
           <contact_surface_layer>0</contact_surface_layer>
         </constraints>
       </ode>
-    </physics>
+    </physics> -->
 
     <light type="directional" name="luz_Techo">
       <pose>2 2 9 0 0 0</pose>

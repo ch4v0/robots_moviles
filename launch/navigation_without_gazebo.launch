@@ -1,5 +1,6 @@
 <launch>
  
+ 
   <!-- launch kobuki-->
   <param name="kobuki_with_laser" command="$(find xacro)/xacro.py '$(find robots_moviles)/urdf/kobuki_with_laser.urdf.xacro'" />
 
