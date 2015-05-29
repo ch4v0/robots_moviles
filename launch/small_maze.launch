@@ -1,65 +1,41 @@
 <launch>
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find robots_moviles)/worlds/small_maze.world"/> 
-    <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="true"/>
-    <arg name="headless" value="false"/>
-    <arg name="debug" value="false"/>  
-  </include> -->
-
-  <!-- launch kobuki-->
-  <param name="kobuki_with_laser" command="$(find xacro)/xacro.py '$(find robots_moviles)/urdf/kobuki_with_laser.urdf.xacro'" />
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="$(find robots_moviles)/worlds/small_maze.world"/> 
+  </include>
 
 
-   <arg name="urdf_file" default="$(find xacro)/xacro.py '$(find robots_moviles)/urdf/kobuki_with_laser.urdf.xacro'" />
-<param name="robot_description" command="$(arg urdf_file)" />
+  <arg name="x" />
+  <arg name="y" />
 
-  <node name="kobuki_with_laser" pkg="gazebo_ros" type="spawn_model" respawn="false" args="-param kobuki_with_laser  -urdf
-	-x 3.5
-	-y 0.5
-	-z 0.2
-	-yaw 0.0000
-	 -model" >
-   <remap from="odom" to="odom_gazebo"/>
+  <arg name="robot_name" value="mobile_base"/>
+  <arg name="initial_pose_x" value="$(arg x)"/>
+  <arg name="initial_pose_y" value="$(arg y)"/>
+  <arg name="initial_pose_z" value="0.2"/>
+  <arg name="initial_pose_roll" value="0.0"/>
+  <arg name="initial_pose_pitch" value="0.0"/>
+  <arg name="initial_pose_yaw" value="0.0"/>
+
+  <param name="robot_description"
+        command="$(find xacro)/xacro.py '$(find robots_moviles)/urdf/kobuki_with_laser.urdf.xacro'"/>
+  <node pkg="gazebo_ros" type="spawn_model" name="spawn_$(arg robot_name)" 
+        args="-x $(arg initial_pose_x) -y $(arg initial_pose_y) -z $(arg initial_pose_z) -R $(arg initial_pose_roll) -P $(arg initial_pose_pitch) -Y $(arg initial_pose_yaw) -unpause -urdf -param robot_description -model $(arg robot_name)" respawn="false">
   </node>
-
-<arg name="robot_name" value=""/>
-   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+  
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="30.0" />
-    <param name="~tf_prefix" value="$(arg robot_name)"/>
   </node>
+  
+  <node pkg="nodelet" type="nodelet" name="$(arg robot_name)_nodelet_manager" args="manager"/>
 
-	 <arg name="map_file" default="$(find robots_moviles)/small_maze.yaml"/>
+
+   <arg name="map_file" default="$(find robots_moviles)/small_maze.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
-  <!--include file="$(find kobuki_node)/launch/robot_with_tf.launch"> </include-->
-  
-  <arg name="delta_x"   default="-3.5"/>
- <arg name="delta_y"   default="-0.5"/>
- <arg name="delta_yaw" default="-0.0"/>
-
-  <node pkg="fake_localization" name="fake_localization" type="fake_localization">
-    <remap from="base_pose_ground_truth" to="odom"/>
-    <param name="delta_x"   value="$(arg delta_x)"/>
-    <param name="delta_y"   value="$(arg delta_y)"/>
-    <param name="delta_yaw" value="$(arg delta_yaw)"/>
-  </node>
-
-  <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
-    <param name="output_frame" value="odom"/>
-    <param name="freq" value="30.0"/>
-    <param name="sensor_timeout" value="1.0"/>
-    <param name="odom_used" value="true"/>
-    <param name="imu_used" value="true"/>
-    <param name="vo_used" value="true"/>
-    <param name="debug" value="false"/>
-    <param name="self_diagnose" value="false"/>
-  </node>
-
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-  	<param name="controller_frequency" value="1.0"/>
+    <param name="controller_frequency" value="10.0"/>
     <rosparam file="$(find robots_moviles)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find robots_moviles)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find robots_moviles)/param/local_costmap_params.yaml" command="load" />
@@ -67,33 +43,25 @@
     <rosparam file="$(find robots_moviles)/param/dwa_local_planner_params.yaml" command="load" />
     <remap from="cmd_vel" to="mobile_base/commands/velocity"/>
   </node>
-
-  <node pkg="nodelet" type="nodelet" name="mobile_base_nodelet_manager" args="manager"/>
-  <node pkg="nodelet" type="nodelet" name="mobile_base" args="load kobuki_softnode/SoftKobukiNodelet mobile_base_nodelet_manager">
-    <rosparam file="$(find robots_moviles)/param/base.yaml" command="load"/>
-    <remap from="mobile_base/odom" to="odom"/>
-    <remap from="mobile_base/joint_states" to="joint_states"/>
-  </node>
   
  <!--  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator" >
     <rosparam command="load" file="$(find kobuki_softnode)/param/diagnostics.yaml" />
   </node>
  -->
-  
-
+ 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robots_moviles)/small_maze.rviz"/>
-  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_odom_link" args="3.5 0.5 0  0 0 /map /odom 100" />
-  <node pkg="tf" type="static_transform_publisher" name="odom_to_footprint" args="0 0 0 0 0 0 /odom /base_footprint 100" />
+  <!--node pkg="tf" type="static_transform_publisher" name="map_to_odom_link" args="$(arg initial_pose_x) $(arg initial_pose_y) 0 0 0 $(arg initial_pose_yaw) /map /odom 100" /-->
+  <!--node pkg="tf" type="static_transform_publisher" name="odom_to_footprint" args="0 0 0 0 0 0 /odom /base_footprint 100" />
   <node pkg="tf" type="static_transform_publisher" name="odom_to_base_link" args="0 0 0 0 0 0 /base_footprint /base_link 100" /-->
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_hokuyo" args="0 0 0 0 0 0 /base_footprint /hokuyo 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_hokuyo" args="0 0 0 0 0 0 /base_link /hokuyo 100" />
 
    <!-- Run AMCL -->
-  <!--node pkg="amcl" type="amcl" name="amcl" args="scan:=hokuyo/scan" output="screen">
+  <node pkg="amcl" type="amcl" name="amcl" args="scan:=hokuyo/scan" output="screen">
 
     <rosparam file="$(find robots_moviles)/param/amcl.yaml" command="load" />
-  		
-  </node-->
+      
+  </node>
 
  
 
-</launch>	
+</launch> 

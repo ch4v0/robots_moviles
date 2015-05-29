@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /TF1/Frames1
+        - /Odometry1
       Splitter Ratio: 0.5
     Tree Height: 503
   - Class: rviz/Selection
@@ -25,7 +26,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Visualization Manager:
   Class: ""
   Displays:
@@ -92,6 +93,11 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        hokuyo_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         wheel_left_link:
           Alpha: 1
           Show Axes: false
@@ -129,6 +135,10 @@ Visualization Manager:
           Value: true
         gyro_link:
           Value: true
+        hokuyo:
+          Value: true
+        hokuyo_link:
+          Value: true
         map:
           Value: true
         odom:
@@ -158,6 +168,10 @@ Visualization Manager:
                 cliff_sensor_right_link:
                   {}
                 gyro_link:
+                  {}
+                hokuyo:
+                  {}
+                hokuyo_link:
                   {}
                 wheel_left_link:
                   {}
@@ -207,7 +221,7 @@ Visualization Manager:
       Color: 255; 25; 0
       Enabled: true
       Keep: 100
-      Length: 1
+      Length: 0.5
       Name: Odometry
       Position Tolerance: 0.1
       Topic: /odom

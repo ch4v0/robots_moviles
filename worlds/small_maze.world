@@ -47,20 +47,20 @@
     </light>
 
       <model name='laberinto'>
-        <link name="goal">
+        <!--link name="goal">
            <collision name='goal'>
             <geometry>
               <box>
-                <size>1 1 0.01</size>
+                <size>1 1 0.001</size>
               </box>
             </geometry>
-            <pose>0.25 0.25 0.01 0 -0 0</pose>
+            <pose>0.25 0.25 0.001 0 -0 0</pose>
           </collision>
           <visual name='goal'>
-            <pose>0.25 0.25 0.01 0 -0 0</pose>
+            <pose>0.25 0.25 0.001 0 -0 0</pose>
             <geometry>
               <box>
-                <size>1 1 0.01</size>
+                <size>1 1 0.001</size>
               </box>
             </geometry>
             <material>
@@ -74,8 +74,8 @@
             <linear>0</linear>
             <angular>0</angular>
           </velocity_decay>
-            <pose>0.25 0.25 0.01 0 -0 0</pose>
-        </link>
+            <pose>0.25 0.25 0.001 0 -0 0</pose>
+        </link-->
         <link name="ground">
            <collision name='ground'>
             <geometry>
