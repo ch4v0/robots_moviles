@@ -1,4 +1,4 @@
-image: small_maze_400x400.jpg
+image: ../../python/large_maze.jpg
 resolution: 0.01
 origin: [0.0, 0.0, 0.0]
 occupied_thresh: 0.65
