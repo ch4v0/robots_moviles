@@ -40,7 +40,6 @@
     <rosparam file="$(find robots_moviles)/param/large_maze/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find robots_moviles)/param/large_maze/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find robots_moviles)/param/large_maze/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find robots_moviles)/param/large_maze/dwa_local_planner_params.yaml" command="load" />
     <remap from="cmd_vel" to="mobile_base/commands/velocity"/>
   </node>
   
